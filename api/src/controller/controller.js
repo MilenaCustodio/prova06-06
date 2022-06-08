@@ -12,7 +12,7 @@ server.post('/pet/nome', async (req,resp)=>{
         if(!novoPet.nome)
          throw new Error('Nome do pet é obrigatório!');
 
-         const InserirPet= await InserirPet(novoPet);
+         const petInserido= await InserirPet(novoPet);
 
          resp.send(petInserido);
 
