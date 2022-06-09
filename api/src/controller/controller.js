@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {ConsultarPet, InserirPet} from '../repository/repository.js';
+import {ConsultarPet, InserirPet} from '../repository/repository.js'
 
 
 const server = Router();
@@ -7,14 +7,11 @@ const server = Router();
 
 server.post('/pet/nome', async (req,resp)=>{
      try{
-         const novoPet =req.body;
+         const {nome} =req.query;
+
+         const resposta = await InserirPet(nome);
+         resp.send(resposta)
          
-        if(!novoPet.nome)
-         throw new Error('Nome do pet é obrigatório!');
-
-         const petInserido= await InserirPet(novoPet);
-
-         resp.send(petInserido);
 
      }catch (err){
          resp.status(400).send({
