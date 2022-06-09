@@ -4,7 +4,7 @@ import cors from 'cors'
 
 import controller from './controller/controller.js'
 
-server.use(express.json());
+server.use(express.json())
 
 server.use(controller);
 
